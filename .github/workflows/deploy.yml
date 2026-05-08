@@ -19,6 +19,6 @@ jobs:
 
       - name: Run deploy script via SSH
         run: |
-          ssh -o StrictHostKeyChecking=no \
+        ssh -o StrictHostKeyChecking=no -p ${{ secrets.DEPLOY_PORT }} \
             ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
             "bash -s" < ./deploy.sh
