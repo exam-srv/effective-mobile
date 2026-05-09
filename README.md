@@ -2,25 +2,36 @@
 Веб-приложение, развёрнутое в Docker-контейнерах с Nginx в качестве reverse proxy, оба сервиса находятся в изолированной Docker-сети `app-network`.
 
 # Стек использованных технологий:
-Backend: Node.js 20 (node:20-slim)
-Reverse Proxy: Nginx (nginx:alpine)
-Docker Compose
-CI/CD: GitHub Actions + SSH-деплой
 Хост: Debian 13 (Proxmox VM)
-
+   Docker Compose
+      Backend: Node.js 20 (node:20-slim)
+      Reverse Proxy: Nginx (nginx:alpine)
+CI/CD: GitHub Actions + SSH-деплой
 
 ├── backend/
+
 │   ├── Dockerfile
+
 │   ├── package.json
+
 │   └── server.js
+
 ├── nginx/
+
 │   └── nginx.conf
+
 ├── .github/
+
 │   └── workflows/
+
 │       └── deploy.yml
+
 ├── deploy.sh
+
 ├── docker-compose.yml
+
 ├── .gitignore
+
 └── README.md
 
 # Как это работает:
@@ -31,7 +42,7 @@ CI/CD: GitHub Actions + SSH-деплой
 5. Node.js-приложение отвечает `"Hello from Effective Mobile!"`
 6. Ответ возвращается клиенту через Nginx
 
-# GitHub Actions + SSH-деплой
+# GitHub Actions + SSH-деплой (VisualCode studio + Git)
 При изменения кода в приложении - обновление происходит автоматически по следующему сценарию:
 ## Триггер
 Вы выполняете `git add ., git commit и git push origin main`. GitHub фиксирует изменение в ветке main и запускает пайплайн Deploy.
