@@ -9,8 +9,10 @@
       Backend: Node.js 20 (node:20-slim)
 
       Reverse Proxy: Nginx (nginx:alpine)
-      
+
 CI/CD: GitHub Actions + SSH-деплой
+
+# Структура каталога
 
 ├── backend/
 
