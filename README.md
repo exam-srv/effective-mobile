@@ -44,7 +44,7 @@ CI/CD: GitHub Actions + SSH-деплой
 # Как это работает:
 1. Клиент отправляет запрос на `http://localhost` или `http://exam-srv.ru` (порт 80 хоста) 
 2. Docker пробрасывает его в контейнер `nginx`
-3. Nginx читает кастомный `nginx.conf` и проксирует запрос по имени сервиса: `proxy_pass http://backend:8080`
+3. Nginx читает файл конфиугации `nginx.conf` и проксирует запрос по имени сервиса: `proxy_pass http://backend:8080`
 4. Docker DNS разрешает `backend` во внутренний IP-адрес контейнера
 5. Node.js-приложение отвечает `"Hello from Effective Mobile!"`
 6. Ответ возвращается клиенту через Nginx
