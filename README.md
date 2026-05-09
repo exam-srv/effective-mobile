@@ -3,9 +3,13 @@
 
 # Стек использованных технологий:
 Хост: Debian 13 (Proxmox VM)
+
    Docker Compose
+
       Backend: Node.js 20 (node:20-slim)
+
       Reverse Proxy: Nginx (nginx:alpine)
+      
 CI/CD: GitHub Actions + SSH-деплой
 
 ├── backend/
