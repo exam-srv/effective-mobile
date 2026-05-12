@@ -11,6 +11,9 @@ COPY --chown=nodeuser:nodeuser . .
 
 EXPOSE 8080
 
+RUN apt-get update && apt-get install -y --no-install-recommends curl && \
+    rm -rf /var/lib/apt/lists/*
+
 USER nodeuser
 
 CMD ["npm", "start"]

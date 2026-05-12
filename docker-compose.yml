@@ -1,24 +1,47 @@
+version: '3.8'
+
 services:
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
     container_name: webapp_backend
+    expose:
+      - "${BACKEND_PORT}"
+    environment:
+      - PORT="${BACKEND_PORT}"
     networks:
       - app-network
+    restart: unless-stopped
+    labels:
+      effective-mobile.version: "1.1.0"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:${BACKEND_PORT}/"]
+      interval: ${HEALTH_INTERVAL}
+      timeout: ${HEALTH_TIMEOUT}
+      retries: ${HEALTH_RETRIES}
+      start_period: 5s
 
   frontend:
-    image: nginx:alpine
+    build: ./nginx
+    container_name: webapp_frontend
     ports:
-      - "80:80"
+      - "${FRONTEND_PORT}:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - backend
-    container_name: webapp_frontend
+      backend:
+        condition: service_healthy
     networks:
       - app-network
-
+    restart: unless-stopped
+    labels:
+      effective-mobile.version: "1.1.0"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/"]
+      interval: ${HEALTH_INTERVAL}
+      timeout: ${HEALTH_TIMEOUT}
+      retries: ${HEALTH_RETRIES}
 networks:
   app-network:
     driver: bridge
