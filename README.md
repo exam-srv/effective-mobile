@@ -21,9 +21,13 @@ CI/CD: GitHub Actions + SSH-деплой
 
 │   ├── package.json
 
+│   ├── .dockerignore
+
 │   └── server.js
 
 ├── nginx/
+
+│   ├── .dockerfile
 
 │   └── nginx.conf
 
@@ -70,6 +74,13 @@ GitHub Actions получает статус "успешно", помечает 
    cd effective-mobile
    docker compose up -d --build
    ```
+
+Проект поддерживает настройку без правки `docker-compose.yml`. Создайте файл `.env` на основе шаблона:
+bash
+```
+cp .env.example .env
+```
+
 Проверка работоспособности:
  bash
    ```
