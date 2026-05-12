@@ -89,4 +89,4 @@ cp .env.example .env
    curl http://localhost
    docker exec webapp_frontend curl -s http://backend:8080
    ```
-Вывод команд: Hello from Effective Mobile!
+Вывод команд:  Hello from Effective Mobile!
