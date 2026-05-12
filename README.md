@@ -43,6 +43,8 @@ CI/CD: GitHub Actions + SSH-деплой
 
 ├── .gitignore
 
+├── .env.example
+
 └── README.md
 
 # Как это работает:
