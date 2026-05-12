@@ -21,4 +21,4 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no -p ${{ secrets.DEPLOY_PORT }} \
               ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} \
-              "bash -s" < ./deploy.sh
+               "cd ~/my-web-app && bash -s" < ./deploy.sh
